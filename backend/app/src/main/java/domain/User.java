@@ -1,6 +1,7 @@
 package domain;
 
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -38,5 +39,15 @@ public class User {
         this.updatedAt = Instant.now();
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public void setFullname(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPasswordHash(@Nullable String encode) {
+        this.passwordHash = passwordHash;
+    }
 }
