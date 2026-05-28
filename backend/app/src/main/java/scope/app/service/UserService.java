@@ -1,10 +1,11 @@
-package service;
+package scope.app.service;
 
-import domain.User;
-import dto.RegisterRequest;
+import scope.app.domain.User;
+import scope.app.dto.RegisterRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import scope.app.repository.UserRepository;
+
 
 @Service
 public class UserService {
@@ -29,5 +30,18 @@ public class UserService {
         user.setPasswordHash(passwordEncoder.encode(request.password));
 
         return userRepository.save(user);
+    }
+
+    public String login(String email, String password) {
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Invalid credentials"));
+
+
+        if (!passwordEncoder.matches(password, user.getPasswordHash())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        return user.getEmail();
     }
 }

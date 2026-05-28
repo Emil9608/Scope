@@ -1,4 +1,4 @@
-package domain;
+package scope.app.domain;
 
 import jakarta.persistence.*;
 import org.jspecify.annotations.Nullable;
@@ -49,5 +49,13 @@ public class User {
 
     public void setPasswordHash(@Nullable String encode) {
         this.passwordHash = passwordHash;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

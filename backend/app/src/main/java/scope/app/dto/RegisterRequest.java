@@ -1,4 +1,4 @@
-package dto;
+package scope.app.dto;
 
 public class RegisterRequest {
     public String email;
