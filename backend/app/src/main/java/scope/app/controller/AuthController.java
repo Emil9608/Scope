@@ -1,6 +1,7 @@
 package scope.app.controller;
 
-import scope.app.domain.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import scope.app.dto.AuthResponse;
 import scope.app.dto.LoginRequest;
 import scope.app.dto.RegisterRequest;
@@ -19,8 +20,9 @@ public class AuthController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public User register(@RequestBody RegisterRequest request) {
-        return userService.register(request);
+    public ResponseEntity<Void> register(@RequestBody RegisterRequest request) {
+        userService.register(request);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     public AuthController(UserService userService, JwtService jwtService) {

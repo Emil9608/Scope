@@ -1,7 +1,6 @@
 package scope.app.domain;
 
 import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -47,8 +46,12 @@ public class User {
         this.fullName = fullName;
     }
 
-    public void setPasswordHash(@Nullable String encode) {
-        this.passwordHash = passwordHash;
+    public void setPasswordHash(String encode) {
+        this.passwordHash = encode;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
     public String getPasswordHash() {

@@ -15,5 +15,3 @@ spring:
 jwt:
   secret: "super-secret-key-super-secret-key"
   expiration: 86400000
-
-kind: Application
